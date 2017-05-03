@@ -2,16 +2,24 @@
   "name": "aloloco-front",
   "version": "1.0.0",
   "description": "aLoLoco Frontend",
-  "main": "index.html",
+  "main": "server.js",
+  "engines": {
+    "node": "5.10.1",
+    "npm": "3.10.10"
+  },
   "dependencies": {
-    "angular": "^1.6.4"
+    "angular": "^1.6.4",
+    "express": "^4.15.2"
   },
   "devDependencies": {
     "jasmine": "^2.6.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
+  "cacheDirectories": [
+    "node_modules"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Grupo-E-012017/aloloco-front.git"
