@@ -2,7 +2,7 @@
   "name": "aloloco-front",
   "version": "1.0.0",
   "description": "aLoLoco Frontend",
-  "main": "index.html",
+  "main": "index.js",
   "dependencies": {
     "angular": "^1.6.4"
   },
