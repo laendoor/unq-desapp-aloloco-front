@@ -1,0 +1,24 @@
+{
+  "name": "aloloco-front",
+  "description": "aLoLoco Frontend",
+  "main": "server.js",
+  "authors": [
+    "Di Lorenzo - Matkorsky"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "aloloco"
+  ],
+  "homepage": "https://github.com/Grupo-E-012017/aloloco-front",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}
