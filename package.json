@@ -1,0 +1,26 @@
+{
+  "name": "aloloco-front",
+  "version": "1.0.0",
+  "description": "aLoLoco Frontend",
+  "main": "index.html",
+  "dependencies": {
+    "angular": "^1.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grupo-E-012017/aloloco-front.git"
+  },
+  "keywords": [
+    "aloloco"
+  ],
+  "author": "Di Lorenzo - Matkorsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grupo-E-012017/aloloco-front/issues"
+  },
+  "homepage": "https://github.com/Grupo-E-012017/aloloco-front#readme"
+}
