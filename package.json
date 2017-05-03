@@ -17,6 +17,7 @@
   "scripts": {
     "test": "jasmine"
   },
+  "postinstall": "./node_modules/bower/bin/bower install",
   "cacheDirectories": [
     "node_modules"
   ],
