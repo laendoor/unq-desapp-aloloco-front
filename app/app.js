@@ -16,7 +16,7 @@ app.config(function($routeProvider) {
         })
         .when("/map", {
             templateUrl : "views/map.html"
-        });
+        })
         .when("/admin/import", {
             templateUrl: "views/import.html"
         });
@@ -28,10 +28,10 @@ app.config(function (RestangularProvider) {
 
 app.controller('HomeController', ['$scope', 'Restangular', function($scope, Restangular) {
 
-    Restangular.all('products')
-        .getList()
-        .then(function(products) {
-            $scope.products = products;
+    Restangular.all('stock')
+        .customGET()
+        .then(function (products) {
+            $scope.products = products['data'];
         });
 
 }]);
