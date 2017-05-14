@@ -11,8 +11,16 @@
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
- <div ng-view></div>
-
+<div class="container-fluid">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#!/users/1/wishlists/2">Wishlist X</a></li>
+        <li><a href="/#!/users/1/wishlists/create">Create Wishlist</a></li>
+        <li><a href="/#!/map">Map</a></li>
+        <li><a href="/#!/admin/import">Import</a></li>
+    </ul>
+    <div ng-view></div>
+</div>
  <!--fixme-->
  <script>
      function initMap() {
