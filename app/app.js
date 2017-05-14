@@ -7,6 +7,9 @@ app.config(function($routeProvider) {
             controller: "HomeController"
 
         })
+        .when("/users/:userId/wishlists/create", {
+            templateUrl: "views/wishlist-form.html"
+        })
         .when("/map", {
             templateUrl : "views/map.html"
         });
