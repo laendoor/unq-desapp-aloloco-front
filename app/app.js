@@ -10,6 +10,10 @@ app.config(function($routeProvider) {
         .when("/users/:userId/wishlists/create", {
             templateUrl: "views/wishlist-form.html"
         })
+        .when("/users/:userId/wishlists/:wishlistId", {
+            templateUrl: "views/wishlist.html",
+            controller: "WishlistController"
+        })
         .when("/map", {
             templateUrl : "views/map.html"
         });
@@ -27,4 +31,9 @@ app.controller('HomeController', ['$scope', 'Restangular', function($scope, Rest
             $scope.products = products;
         });
 
+}]);
+
+app.controller('WishlistController', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    $scope.user = $routeParams.userId;
+    $scope.wishlist = $routeParams.wishlistId;
 }]);
