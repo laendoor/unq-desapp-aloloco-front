@@ -17,6 +17,9 @@ app.config(function($routeProvider) {
         .when("/map", {
             templateUrl : "views/map.html"
         });
+        .when("/admin/import", {
+            templateUrl: "views/import.html"
+        });
 });
 
 app.config(function (RestangularProvider) {
