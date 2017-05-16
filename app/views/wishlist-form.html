@@ -1,1 +1,45 @@
-<h1>Nueva Wishlist</h1>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>Nueva lista de compras</h1>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre...">
+        </div>
+        <hr>
+        <div class="row" ng-repeat="product in selectedProducts">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="{{ product.image }}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <strong>Nombre:</strong> {{ product.name }} <br>
+                <strong>Marca:</strong> {{ product.brand }} <br> <br>
+            </div>
+        </div>
+        <p ng-show="selectedProducts.length == 0">Aún no hay productos seleccionados</p>
+        <hr>
+        <button class="btn-primary btn">Guardar</button>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Buscar..." ng-model="search">
+        </div>
+        <hr>
+        <div class="row" ng-repeat="product in stock | filter:search">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="{{ product.image }}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <strong>Nombre:</strong> {{ product.name }} <br>
+                <strong>Marca:</strong> {{ product.brand }} <br> <br>
+                <button class="btn btn-primary" ng-click="addProductToSelectedOnes(product.id)">Agregar</button>
+            </div>
+        </div>
+    </div>
+</div>
