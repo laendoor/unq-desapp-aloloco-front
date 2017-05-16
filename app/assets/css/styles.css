@@ -1,0 +1,29 @@
+header {
+    background: url('../img/header.jpg') center center;
+    background-size: cover;
+    height: 200px;
+}
+
+header .menu {
+    margin-top: 20px;
+}
+
+header .menu a {
+    color: white;
+    font-weight: bold;
+}
+
+header .menu.nav > li > a:focus,
+header .menu.nav > li > a:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+header .dropdown-toggle {
+    color: #fff;
+    font-weight: bold;
+}
+
+header .logo {
+    display: block;
+    margin-top: 20px;
+}

@@ -7,18 +7,43 @@
     <script src="/components/angular-route/angular-route.js"></script>
     <script src="/components/lodash/dist/lodash.js"></script>
     <script src="/components/restangular/dist/restangular.js"></script>
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<div class="container-fluid">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/#!/users/1/wishlists/2">Wishlist X</a></li>
-        <li><a href="/#!/users/1/wishlists/create">Create Wishlist</a></li>
-        <li><a href="/#!/map">Map</a></li>
-        <li><a href="/#!/admin/import">Import</a></li>
-    </ul>
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <a class="logo pull-left" href=""><img src="assets/img/logo.png" alt="" width="50"></a>
+            </div>
+            <div class="col-md-6">
+                <ul class="pull-right menu nav nav-pills hidden-xs">
+                    <li><a href="/">Mis Listas</a></li>
+                    <li><a href="/#!/users/1/wishlists/create">Nueva Lista</a></li>
+                    <li><a href="/#!/map">Mapa</a></li>
+                    <li><a href="/#!/admin/import">Importar</a></li>
+                </ul>
+                <div class="btn-group pull-right visible-xs menu">
+                    <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Menu <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/">Mis Listas</a></li>
+                        <li><a href="/#!/users/1/wishlists/create">Nueva Lista</a></li>
+                        <li><a href="/#!/map">Mapa</a></li>
+                        <li><a href="/#!/admin/import">Importar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
     <div ng-view></div>
 </div>
 <!--fixme-->
