@@ -3,9 +3,11 @@
         <div class="page-header">
             <h1>Importar Productos</h1>
         </div>
-        <div class="form-group">
-            <input type="file" class="form-control">
-        </div>
-        <button class="btn btn-block btn-primary">Importar</button>
+        <form class="uploader-form" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" class="form-control" id="file" name="file">
+            </div>
+        </form>
+        <button class="btn btn-block btn-primary" ng-click="uploadFile()">Importar</button>
     </div>
 </div>
