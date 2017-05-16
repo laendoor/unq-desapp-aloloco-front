@@ -1,12 +1,17 @@
-listado de cosas
-<br>
-
-<ul>
-	<li ng-repeat="product in products">
-		{{ product.id }} <br>
-		{{ product.name }} <br>
-		{{ product.brand }} <br>
-		{{ product.price }} <br>
-		<img src="{{ product.image }}">
-	</li>
-</ul>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h1>Listas de Compras</h1>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="n in [1,2,3,4]">
+        <div class="thumbnail">
+            <img src="http://lorempixel.com/800/800/food/?{{ n }}" alt="">
+            <div class="caption">
+                <h4>Cumpleaños</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p><a href="#" class="btn btn-block btn-primary" role="button">Ver</a></p>
+            </div>
+        </div>
+    </div>
+</div>
