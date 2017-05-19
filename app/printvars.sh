@@ -1,3 +1,3 @@
 #! /bin/bash
 
-echo "var api_route = '$HOME';"
+echo "var API_ROUTE = '$API_ROUTE';"
