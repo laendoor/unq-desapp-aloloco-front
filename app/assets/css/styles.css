@@ -44,3 +44,11 @@ header .logo {
 #map {
     height: 400px;
 }
+
+.stock-product{
+    margin-bottom: 15px;
+}
+
+.stock-product .meta {
+    height: 80px;
+}
