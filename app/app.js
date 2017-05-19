@@ -28,7 +28,7 @@ app.config(function ($routeProvider) {
 
 app.config(function (RestangularProvider) {
 
-    RestangularProvider.setBaseUrl('http://api.aloloco.dev');
+    RestangularProvider.setBaseUrl(API_ROUTE);
 
 });
 
@@ -120,7 +120,7 @@ app.controller('ImportController', ['$scope', '$http', function ($scope, $http) 
 
     $scope.uploadFile = function () {
         $.ajax({
-            url: 'http://api.aloloco.dev/stock',
+            url: API_ROUTE + '/stock',
             type: 'POST',
             data: new FormData($('.uploader-form')[0]),
             cache: false,

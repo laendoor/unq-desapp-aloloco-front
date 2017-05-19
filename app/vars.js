@@ -1,1 +1,1 @@
-var api_route = '/home/vagrant';
+var API_ROUTE = 'http://api.aloloco.dev';
