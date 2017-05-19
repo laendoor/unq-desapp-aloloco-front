@@ -36,7 +36,6 @@ app.controller('HomeController', ['$scope', 'Restangular', function ($scope, Res
 
     Restangular.all('client/wishlists').customGET().then(function (wishlists) {
         $scope.wishlists = wishlists['data'];
-        console.log(wishlists['data']);
     });
 
 }]);
@@ -88,7 +87,6 @@ app.controller('WishlistCreationController', ['$scope', 'Restangular', function 
 
     Restangular.all('stock').customGET().then(function (stock) {
         $scope.stock = stock['data'];
-        console.log(stock['data']);
     });
 
     $scope.selectedProducts = [];
