@@ -106,11 +106,15 @@ app.controller('WishlistCreationController', ['$scope', 'Restangular', function 
 
 }]);
 
-app.controller('WishlistController', ['$scope', '$routeParams', function ($scope, $routeParams) {
+app.controller('WishlistController', ['$scope', '$routeParams', 'Restangular', function ($scope, $routeParams, Restangular) {
 
-    $scope.user = $routeParams.userId;
+    $scope.wishlist_id = $routeParams.wishlistId;
 
-    $scope.wishlist = $routeParams.wishlistId;
+    Restangular.all('client/wishlists').customGET().then(function (wishlists) {
+        $scope.wishlist = wishlists['data'].find(function (wishlist) {
+            return wishlist.id == $scope.wishlist_id;
+        });
+    });
 
 }]);
 
