@@ -12,27 +12,14 @@ header .menu {
     margin-top: 20px;
 }
 
-header .desktop-menu a {
+header .desktop-menu > li > a {
     color: white;
     font-weight: bold;
-}
-
-header .menu .dropdown-toggle:hover,
-header .menu .dropdown-toggle:focus {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
 }
 
 header .menu.nav > li > a:focus,
 header .menu.nav > li > a:hover {
     background: rgba(0, 0, 0, 0.5);
-}
-
-header .dropdown-toggle {
-    color: #fff;
-    font-weight: bold;
 }
 
 header .logo {
@@ -45,10 +32,45 @@ header .logo {
     height: 400px;
 }
 
-.stock-product{
+.stock-product {
     margin-bottom: 15px;
 }
 
 .stock-product .meta {
     height: 80px;
+}
+
+.dropdown > a {
+    cursor: pointer;
+}
+
+.dropdown.open > a,
+header .menu .dropdown-toggle:hover,
+header .menu .dropdown-toggle:focus {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+header .menu .dropdown-toggle {
+    color: #fff;
+    font-weight: bold;
+}
+
+header .desktop-menu .dropdown-toggle {
+    display: block;
+    padding: 10px;
+}
+
+header .desktop-menu img {
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 4px;
+    position: relative;
+    top: -1px;
+}
+
+@media only screen and (max-width: 768px) {
+
 }

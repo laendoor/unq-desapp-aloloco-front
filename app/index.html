@@ -2,11 +2,14 @@
 <html lang="en" ng-app="aloloco">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-signin-client_id"
+          content="590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com">
     <title>aLoLoco</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
     <script src="vars.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaN1qWHfgHfgYV62ltnt7FIaifUn5pB7I"></script>
     <script src="/components/angular/angular.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
     <script src="/components/angular-i18n/angular-locale_es-ar.js"></script>
     <script src="/components/angular-route/angular-route.js"></script>
     <script src="/components/lodash/dist/lodash.js"></script>
@@ -18,19 +21,34 @@
     <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body ng-controller="MainController">
 <header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a class="logo pull-left" href=""><img src="assets/img/logo.png" alt="" width="50"></a>
             </div>
-            <div class="col-md-6">
-                <ul class="pull-right menu desktop-menu nav nav-pills hidden-xs">
-                    <li><a href="/">Mis Listas</a></li>
-                    <li><a href="/#!/users/1/wishlists/create">Nueva Lista</a></li>
-                    <li><a href="/#!/map">Mapa</a></li>
-                    <li><a href="/#!/admin/import">Importar</a></li>
+            <div class="col-md-8">
+                <ul class="pull-right menu desktop-menu nav nav-pills hidden-xs" ng-controller="MenuController">
+                    <li ng-show="authenticated"><a href="/">Listas</a></li>
+                    <li ng-show="authenticated"><a href="/#!/users/1/wishlists/create">Crear</a></li>
+                    <li ng-show="authenticated">
+                        <div class="dropdown">
+                            <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="true">
+                                <img src="/assets/img/gmail.png" alt="">
+                                Alan <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                                <li><a href="#" ng-click="signOut()">Cerrar Sesión</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li ng-hide="authenticated"><a href="#" id="sign-in-button">Iniciar Sesión</a></li>
+
+                    <!--<li><a href="/#!/map">Mapa</a></li>-->
+                    <!--<li><a href="/#!/admin/import">Importar</a></li>-->
                 </ul>
                 <div class="btn-group pull-right visible-xs menu">
                     <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown"
@@ -42,6 +60,9 @@
                         <li><a href="/#!/users/1/wishlists/create">Nueva Lista</a></li>
                         <li><a href="/#!/map">Mapa</a></li>
                         <li><a href="/#!/admin/import">Importar</a></li>
+                        <!--<li>-->
+                        <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+                        <!--</li>-->
                     </ul>
                 </div>
             </div>

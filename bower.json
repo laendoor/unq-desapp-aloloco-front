@@ -22,6 +22,7 @@
     "restangular": "^1.6.1",
     "bootstrap": "^3.3.7",
     "angular-i18n": "^1.6.4",
-    "font-awesome": "fontawesome#^4.7.0"
+    "font-awesome": "fontawesome#^4.7.0",
+    "satellizer": "^0.15.5"
   }
 }

@@ -1,5 +1,7 @@
 var app = angular.module("aloloco", ["ngRoute", "restangular"]);
 
+var auth2;
+
 app.config(function ($routeProvider) {
 
     $routeProvider
@@ -43,18 +45,14 @@ app.controller('HomeController', ['$scope', 'Restangular', function ($scope, Res
 app.controller('MapController', ['$scope', function ($scope) {
 
     $scope.initMap = function () {
-        var markerArray = [];
-
-        var directionsService = new google.maps.DirectionsService;
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13,
-            center: {lat: -34.7101435, lng: -58.2858949}
-        });
-
-        var directionsDisplay = new google.maps.DirectionsRenderer({map: map});
-
-        var stepDisplay = new google.maps.InfoWindow;
+        var markerArray = [],
+            directionsService = new google.maps.DirectionsService,
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: {lat: -34.7101435, lng: -58.2858949}
+            }),
+            directionsDisplay = new google.maps.DirectionsRenderer({map: map}),
+            stepDisplay = new google.maps.InfoWindow;
 
         $scope.calculateAndDisplayRoute(directionsDisplay, directionsService, markerArray, stepDisplay, map);
     }
@@ -128,6 +126,34 @@ app.controller('ImportController', ['$scope', '$http', function ($scope, $http) 
             cache: false,
             contentType: false,
             processData: false,
+        });
+    }
+
+}]);
+
+app.controller('MenuController', ['$scope', '$http', function ($scope, $http) {
+    alert(auth2);
+}]);
+
+app.controller('MainController', ['$scope', function ($scope) {
+
+    $scope.authenticated = false;
+
+    gapi.load('auth2', function () {
+        auth2 = gapi.auth2.init({
+            client_id: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com',
+            cookiepolicy: 'single_host_origin',
+        });
+        auth2.attachClickHandler('sign-in-button', {}, function (googleUser) {
+            $scope.authenticated = true;
+        }, function (error) {
+            alert(JSON.stringify(error, undefined, 2));
+        });
+    });
+
+    $scope.signOut = function () {
+        auth2.getAuthInstance().signOut().then(function () {
+            $scope.authenticated = false;
         });
     }
 
