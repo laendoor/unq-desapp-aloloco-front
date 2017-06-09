@@ -9,7 +9,7 @@
     <script src="vars.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaN1qWHfgHfgYV62ltnt7FIaifUn5pB7I"></script>
     <script src="/components/angular/angular.js"></script>
-    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="/components/satellizer/dist/satellizer.js"></script>
     <script src="/components/angular-i18n/angular-locale_es-ar.js"></script>
     <script src="/components/angular-route/angular-route.js"></script>
     <script src="/components/lodash/dist/lodash.js"></script>
@@ -45,7 +45,8 @@
                         </div>
                     </li>
 
-                    <li ng-hide="authenticated"><a href="#" id="sign-in-button">Iniciar Sesión</a></li>
+                    <!--<li ng-hide="authenticated"><a href="#" id="sign-in-button">Iniciar Sesión</a></li>-->
+                    <button ng-click="authenticate('google')">Sign in with Google</button>
 
                     <!--<li><a href="/#!/map">Mapa</a></li>-->
                     <!--<li><a href="/#!/admin/import">Importar</a></li>-->

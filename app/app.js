@@ -1,6 +1,25 @@
-var app = angular.module("aloloco", ["ngRoute", "restangular"]);
+var app = angular.module("aloloco", ["ngRoute", "restangular", "satellizer"]);
 
-var auth2;
+app.config(function ($authProvider) {
+    $authProvider.google({
+        clientId: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com'
+    });
+    $authProvider.google({
+        url: '/auth/google',
+        authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+        redirectUri: window.location.origin,
+        requiredUrlParams: ['scope'],
+        optionalUrlParams: ['display'],
+        scope: ['profile', 'email'],
+        responseType: "token",
+        scopePrefix: 'openid',
+        scopeDelimiter: ' ',
+        display: 'popup',
+        oauthType: '2.0',
+        popupOptions: {width: 452, height: 633}
+    });
+
+});
 
 app.config(function ($routeProvider) {
 
@@ -12,6 +31,10 @@ app.config(function ($routeProvider) {
         .when("/users/:userId/wishlists/create", {
             templateUrl: "views/wishlist-form.html",
             controller: "WishlistCreationController"
+        })
+        .when("/users/:userId/history", {
+            templateUrl: "views/history.html",
+            controller: "HistoryController"
         })
         .when("/users/:userId/wishlists/:wishlistId", {
             templateUrl: "views/wishlist.html",
@@ -131,30 +154,174 @@ app.controller('ImportController', ['$scope', '$http', function ($scope, $http) 
 
 }]);
 
-app.controller('MenuController', ['$scope', '$http', function ($scope, $http) {
-    alert(auth2);
+app.controller('MenuController', ['$scope', '$http', '$auth', function ($scope, $http, $auth) {
+    console.log('Autenticado? ' + $auth.isAuthenticated());
 }]);
 
-app.controller('MainController', ['$scope', function ($scope) {
+app.controller('MainController', function ($scope, $auth) {
 
     $scope.authenticated = false;
 
-    gapi.load('auth2', function () {
-        auth2 = gapi.auth2.init({
-            client_id: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com',
-            cookiepolicy: 'single_host_origin',
-        });
-        auth2.attachClickHandler('sign-in-button', {}, function (googleUser) {
-            $scope.authenticated = true;
-        }, function (error) {
-            alert(JSON.stringify(error, undefined, 2));
-        });
-    });
+    $scope.authenticate = function (provider) {
+        $auth.authenticate(provider)
+            .then(function (response) {
+                $auth.setToken(response);
+                console.log($auth.isAuthenticated());
+            })
+            .catch(function (response) {
+            });
+    };
 
-    $scope.signOut = function () {
-        auth2.getAuthInstance().signOut().then(function () {
-            $scope.authenticated = false;
-        });
+    //
+    // gapi.load('auth2', function () {
+    //     auth2 = gapi.auth2.init({
+    //         client_id: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com',
+    //         cookiepolicy: 'single_host_origin',
+    //     });
+    //     auth2.attachClickHandler('sign-in-button', {}, function (googleUser) {
+    //         $scope.authenticated = true;
+    //     }, function (error) {
+    //         alert(JSON.stringify(error, undefined, 2));
+    //     });
+    // });
+    //
+    // $scope.signOut = function () {
+    //     auth2.getAuthInstance().signOut().then(function () {
+    //         $scope.authenticated = false;
+    //     });
+    // }
+
+});
+
+app.controller('HistoryController', function ($scope) {
+
+    $scope.purchases = [
+        {
+            name: 'Navidad',
+            bought_at: '2017/10/20',
+            products: [
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+            ]
+        },
+        {
+            name: 'Navidad',
+            bought_at: '2017/10/20',
+            products: [
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+            ]
+        },
+        {
+            name: 'Navidad',
+            bought_at: '2017/10/20',
+            products: [
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+            ]
+        },
+        {
+            name: 'Navidad',
+            bought_at: '2017/10/20',
+            products: [
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+            ]
+        },
+        {
+            name: 'Navidad',
+            bought_at: '2017/10/20',
+            products: [
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+                {
+                    'name': 'Sarasa',
+                    'amount': 10,
+                    'image' : 'http://loremflickr.com/820/740'
+                },
+            ]
+        },
+    ]
+
+});
+
+
+app.directive('purchase', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'history.html',
+
+        link: function (scope) {
+            scope.showProducts = false;
+
+            scope.toggleProducts = function(){
+                scope.showProducts = ! scope.showProducts;
+            }
+        },
+
+        scope: {
+            purchase: '='
+        },
+
     }
-
-}]);
+});

@@ -71,6 +71,38 @@ header .desktop-menu img {
     top: -1px;
 }
 
+.history {
+    background: #f8f8f8;
+    display: block;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.history .products {
+    margin-top: 10px;
+    margin-bototm: 0;
+}
+
+.history .view-products {
+    cursor: pointer;
+}
+
+.history .products.expanded {
+    max-height: 100px;
+}
+
+.history .products.collapsed {
+    max-height: 0;
+}
+
+.history .name {
+    margin-top: 0;
+}
+
+.history .info {
+    padding: 10px;
+}
+
 @media only screen and (max-width: 768px) {
 
 }
