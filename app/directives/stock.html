@@ -1,0 +1,17 @@
+<div class="col-md-4 stock-product">
+    <div class="thumbnail">
+        <img ng-src="{{ product.image }}" alt="">
+    </div>
+    <div class="meta">
+        <strong>Nombre:</strong> {{ product.name }} <br>
+        <strong>Marca:</strong> {{ product.brand }} <br>
+        <strong ng-class=" exceded_stock ? 'exceded' : ''">Stock:</strong> <span ng-class=" exceded_stock ? 'exceded' : ''">{{ product.stock }}</span> <br> <br>
+    </div>
+    <div class="input-group">
+        <input type="number" class="form-control" placeholder="Cantidad" ng-model="amount">
+        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="addProductToSelectedOnes(product)"><i
+                                class="fa fa-plus" aria-hidden="true"></i></button>
+                    </span>
+    </div>
+</div>

@@ -11,19 +11,10 @@ app.controller('WishlistCreationController', ['$scope', 'Restangular', function 
         return Math.ceil($scope.stock.length / $scope.pageSize);
     }
 
-    $scope.selectedProducts = [];
-
-    $scope.addProductToSelectedOnes = function (id) {
-        var product = $scope.stock.find(function (product) {
-            return product.id == id;
+    $scope.selected = function () {
+        return $scope.stock.filter(function (product) {
+            return product.selected;
         });
-
-        product.amount = 10; // Hacerlo dinamico
-        $scope.selectedProducts.push(product)
-
-        $scope.stock = $scope.stock.filter(function (product) {
-            return product.id != id;
-        })
     }
 
 }]);

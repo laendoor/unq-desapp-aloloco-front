@@ -123,6 +123,10 @@ header .desktop-menu img {
     margin-bottom: 20px;
 }
 
+.exceded {
+    color: red;
+}
+
 .pagination {
     text-align: center;
     width: 100%;

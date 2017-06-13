@@ -11,7 +11,7 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-4 stock-product" ng-repeat="product in selectedProducts">
+            <div class="col-md-4 stock-product" ng-repeat="product in selected()">
                 <div class="thumbnail">
                     <img ng-src="{{ product.image }}" alt="">
                 </div>
@@ -20,7 +20,7 @@
                     <strong>Marca:</strong> {{ product.brand }} <br>
                 </div>
                 <div class="input-group">
-                    <input class="form-control" placeholder="Cantidad" value="{{ product.amount }}">
+                    <input class="form-control" placeholder="Cantidad" value="{{ product.desired }}">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button" ng-click="addProductToSelectedOnes(product.id)"><i
                                 class="fa fa-trash" aria-hidden="true"></i></button>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <p ng-show="selectedProducts.length == 0">Aún no hay productos seleccionados</p>
+        <p ng-show="selected().length == 0">Aún no hay productos seleccionados</p>
         <hr>
         <button class="btn-primary btn">Guardar</button>
     </div>
@@ -39,30 +39,17 @@
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-4 stock-product"
-                 ng-repeat="product in stock | filter:search | startFrom:currentPage*pageSize | limitTo:pageSize">
-                <div class="thumbnail">
-                    <img ng-src="{{ product.image }}" alt="">
-                </div>
-                <div class="meta">
-                    <strong>Nombre:</strong> {{ product.name }} <br>
-                    <strong>Marca:</strong> {{ product.brand }} <br>
-                    <strong>Stock:</strong> {{ product.stock }} <br> <br>
-                </div>
-                <div class="input-group">
-                    <input class="form-control" placeholder="Cantidad">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="addProductToSelectedOnes(product.id)"><i
-                                class="fa fa-plus" aria-hidden="true"></i></button>
-                    </span>
-                </div>
-            </div>
+            <stock ng-repeat="product in stock | filter:search | startFrom:currentPage*pageSize | limitTo:pageSize"
+                   product="product"></stock>
         </div>
         <hr>
         <div class="pagination">
-            <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous</button>
+            <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+                Previous
+            </button>
             {{currentPage+1}}/{{numberOfPages()}}
-            <button class="btn btn-primary" ng-disabled="currentPage >= stock.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+            <button class="btn btn-primary" ng-disabled="currentPage >= stock.length/pageSize - 1"
+                    ng-click="currentPage=currentPage+1">
                 Next
             </button>
         </div>

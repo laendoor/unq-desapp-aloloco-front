@@ -9,6 +9,7 @@ app.directive('purchase', function () {
             scope.toggleProducts = function () {
                 scope.showProducts = !scope.showProducts;
             }
+
         },
 
         scope: {
