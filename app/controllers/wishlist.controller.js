@@ -24,7 +24,7 @@ app.controller('WishlistController', ['$scope', '$routeParams', 'Restangular', f
         })
     }
 
-    Restangular.all('client/wishlists').customGET().then(function (wishlists) {
+    Restangular.all('user/1/wishlists').customGET().then(function (wishlists) {
         $scope.wishlist = wishlists['data'].find(function (wishlist) {
             return wishlist.id == $scope.wishlist_id;
         });
