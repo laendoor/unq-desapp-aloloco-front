@@ -1,23 +1,23 @@
 var app = angular.module("aloloco", ["ngRoute", "restangular"]);
 
-app.config(function ($authProvider, $routeProvider, RestangularProvider) {
-    $authProvider.google({
-        clientId: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com'
-    });
-    $authProvider.google({
-        url: '/auth/google',
-        authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-        redirectUri: window.location.origin,
-        requiredUrlParams: ['scope'],
-        optionalUrlParams: ['display'],
-        scope: ['profile', 'email'],
-        responseType: "token",
-        scopePrefix: 'openid',
-        scopeDelimiter: ' ',
-        display: 'popup',
-        oauthType: '2.0',
-        popupOptions: {width: 452, height: 633}
-    });
+app.config(function ($routeProvider, RestangularProvider) {
+    // $authProvider.google({
+    //     clientId: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com'
+    // });
+    // $authProvider.google({
+    //     url: '/auth/google',
+    //     authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+    //     redirectUri: window.location.origin,
+    //     requiredUrlParams: ['scope'],
+    //     optionalUrlParams: ['display'],
+    //     scope: ['profile', 'email'],
+    //     responseType: "token",
+    //     scopePrefix: 'openid',
+    //     scopeDelimiter: ' ',
+    //     display: 'popup',
+    //     oauthType: '2.0',
+    //     popupOptions: {width: 452, height: 633}
+    // });
 
     $routeProvider
         .when("/", {
