@@ -1,4 +1,4 @@
-var app = angular.module("aloloco", ["ngRoute", "restangular", "satellizer"]);
+var app = angular.module("aloloco", ["ngRoute", "restangular"]);
 
 app.config(function ($authProvider, $routeProvider, RestangularProvider) {
     $authProvider.google({
