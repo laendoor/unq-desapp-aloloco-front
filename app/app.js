@@ -57,19 +57,19 @@ app.config(function ($routeProvider, RestangularProvider) {
 
 });
 
-app.controller('MainController', function ($scope, $auth) {
-
-    $scope.authenticated = true;
-
-    $scope.authenticate = function (provider) {
-        $auth.authenticate(provider)
-            .then(function (response) {
-                $auth.setToken(response);
-                console.log($auth.isAuthenticated());
-            })
-            .catch(function (response) {
-            });
-    };
+// app.controller('MainController', function ($scope, $auth) {
+//
+//     $scope.authenticated = true;
+//
+//     $scope.authenticate = function (provider) {
+//         $auth.authenticate(provider)
+//             .then(function (response) {
+//                 $auth.setToken(response);
+//                 console.log($auth.isAuthenticated());
+//             })
+//             .catch(function (response) {
+//             });
+//     };
 
     //
     // gapi.load('auth2', function () {
@@ -90,4 +90,4 @@ app.controller('MainController', function ($scope, $auth) {
     //     });
     // }
 
-});
+// });
