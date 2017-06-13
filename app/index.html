@@ -14,42 +14,46 @@
     <script src="/components/angular-route/angular-route.js"></script>
     <script src="/components/lodash/dist/lodash.js"></script>
     <script src="/components/restangular/dist/restangular.js"></script>
-    <script src="components/jquery/dist/jquery.min.js"></script>
-    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="app.js"></script>
-    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="/components/jquery/dist/jquery.min.js"></script>
+    <script src="/components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/app.js"></script>
+    <script src="/filters/start-from.filter.js"></script>
+    <script src="/directives/purchase.directive.js"></script>
+    <script src="/controllers/home.controller.js"></script>
+    <script src="/controllers/history.controller.js"></script>
+    <script src="/controllers/wishlist.controller.js"></script>
+    <script src="/controllers/delivery.controller.js"></script>
+    <script src="/controllers/wishlist.create.controller.js"></script>
+    <script src="/controllers/import.controller.js"></script>
+    <link rel="stylesheet" href="/components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
-<body ng-controller="MainController">
+<body ng-controller="MainController" ngCloak>
 <header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4">
-                <a class="logo pull-left" href=""><img src="assets/img/logo.png" alt="" width="50"></a>
+                <a class="logo pull-left" href="/#!/"><img src="assets/img/logo.png" alt="" width="50"></a>
             </div>
             <div class="col-md-8">
-                <ul class="pull-right menu desktop-menu nav nav-pills hidden-xs" ng-controller="MenuController">
-                    <li ng-show="authenticated"><a href="/">Listas</a></li>
-                    <li ng-show="authenticated"><a href="/#!/users/1/wishlists/create">Crear</a></li>
-                    <li ng-show="authenticated">
+                <ul class="pull-right menu desktop-menu nav nav-pills hidden-xs">
+                    <li><a href="/#!/users/1/wishlists/create">Nueva Lista</a></li>
+                    <li><a href="/#!/offers/create">Nueva Promocion</a></li>
+                    <li><a href="/#!/admin/import">Importar</a></li>
+                    <li><a href="/#!/users/1/history">Historial</a></li>
+                    <li>
                         <div class="dropdown">
                             <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="true">
-                                <img src="/assets/img/gmail.png" alt="">
-                                Alan <span class="caret"></span>
+                               aria-haspopup="true" aria-expanded="true"> <img src="/assets/img/gmail.png" alt=""> Alan
+                                <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                                 <li><a href="#" ng-click="signOut()">Cerrar Sesión</a></li>
                             </ul>
                         </div>
                     </li>
-
-                    <!--<li ng-hide="authenticated"><a href="#" id="sign-in-button">Iniciar Sesión</a></li>-->
-                    <button ng-click="authenticate('google')">Sign in with Google</button>
-
-                    <!--<li><a href="/#!/map">Mapa</a></li>-->
-                    <!--<li><a href="/#!/admin/import">Importar</a></li>-->
+                    <!--<button ng-click="authenticate('google')">Sign in with Google</button>-->
                 </ul>
                 <div class="btn-group pull-right visible-xs menu">
                     <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown"
@@ -57,9 +61,6 @@
                         Menu <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="/">Mis Listas</a></li>
-                        <li><a href="/#!/users/1/wishlists/create">Nueva Lista</a></li>
-                        <li><a href="/#!/map">Mapa</a></li>
                         <li><a href="/#!/admin/import">Importar</a></li>
                         <!--<li>-->
                         <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->

@@ -30,6 +30,7 @@ header .logo {
 
 #map {
     height: 400px;
+    margin-bottom: 20px;
 }
 
 .stock-product {
@@ -101,6 +102,30 @@ header .desktop-menu img {
 
 .history .info {
     padding: 10px;
+}
+
+.on-cart {
+    font-weight: bold;
+    margin: 0;
+    font-size: 24px;
+}
+
+.add-to-cart {
+    margin-top: 5px;
+}
+
+#request-box{
+    margin-left: 10px;
+}
+
+.wishlist-buttons {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    text-align: center;
+    width: 100%;
 }
 
 @media only screen and (max-width: 768px) {
