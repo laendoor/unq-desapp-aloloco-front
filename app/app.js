@@ -1,6 +1,6 @@
-var app = angular.module("aloloco", ["ngRoute", "restangular"]);
+var app = angular.module("aloloco", ["ngRoute", "restangular", "pascalprecht.translate"]);
 
-app.config(function ($routeProvider, RestangularProvider) {
+app.config(function ($routeProvider, RestangularProvider, $translateProvider) {
     // $authProvider.google({
     //     clientId: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com'
     // });
@@ -18,6 +18,30 @@ app.config(function ($routeProvider, RestangularProvider) {
     //     oauthType: '2.0',
     //     popupOptions: {width: 452, height: 633}
     // });
+
+    $translateProvider.translations('en', {
+        'menu': {
+            'home': 'Home',
+            'new_wishlist': 'New wishlist',
+            'new_offer': 'New offer',
+            'import': 'Import',
+            'history': 'History',
+            'profile': 'Profile',
+            'logout': 'Log out',
+        }
+    })
+        .translations('es', {
+            'menu': {
+                'home': 'Inicio',
+                'new_wishlist': 'Nueva lista',
+                'new_offer': 'Nueva promoción',
+                'import': 'Importar',
+                'history': 'Historial',
+                'profile': 'Perfil',
+                'logout': 'Cerrar Sesion',
+            }
+        })
+        .preferredLanguage('es');
 
     $routeProvider
         .when("/", {
@@ -57,37 +81,41 @@ app.config(function ($routeProvider, RestangularProvider) {
 
 });
 
-// app.controller('MainController', function ($scope, $auth) {
-//
-//     $scope.authenticated = true;
-//
-//     $scope.authenticate = function (provider) {
-//         $auth.authenticate(provider)
-//             .then(function (response) {
-//                 $auth.setToken(response);
-//                 console.log($auth.isAuthenticated());
-//             })
-//             .catch(function (response) {
-//             });
-//     };
+app.controller('MainController', function ($scope, $translate) {
 
-    //
-    // gapi.load('auth2', function () {
-    //     auth2 = gapi.auth2.init({
-    //         client_id: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com',
-    //         cookiepolicy: 'single_host_origin',
-    //     });
-    //     auth2.attachClickHandler('sign-in-button', {}, function (googleUser) {
-    //         $scope.authenticated = true;
-    //     }, function (error) {
-    //         alert(JSON.stringify(error, undefined, 2));
-    //     });
-    // });
-    //
-    // $scope.signOut = function () {
-    //     auth2.getAuthInstance().signOut().then(function () {
-    //         $scope.authenticated = false;
-    //     });
-    // }
+    $scope.changeLanguage = function (key) {
+        $translate.use(key);
+    };
 
+    // $scope.authenticated = true;
+    //
+    // $scope.authenticate = function (provider) {
+    //     $auth.authenticate(provider)
+    //         .then(function (response) {
+    //             $auth.setToken(response);
+    //             console.log($auth.isAuthenticated());
+    //         })
+    //         .catch(function (response) {
+    //         });
+    // };
+
+//
+// gapi.load('auth2', function () {
+//     auth2 = gapi.auth2.init({
+//         client_id: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com',
+//         cookiepolicy: 'single_host_origin',
+//     });
+//     auth2.attachClickHandler('sign-in-button', {}, function (googleUser) {
+//         $scope.authenticated = true;
+//     }, function (error) {
+//         alert(JSON.stringify(error, undefined, 2));
+//     });
 // });
+//
+// $scope.signOut = function () {
+//     auth2.getAuthInstance().signOut().then(function () {
+//         $scope.authenticated = false;
+//     });
+// }
+
+});
