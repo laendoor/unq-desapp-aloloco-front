@@ -1,1 +1,1 @@
-var API_ROUTE = '';
+var API_ROUTE = 'http://api.aloloco.dev';

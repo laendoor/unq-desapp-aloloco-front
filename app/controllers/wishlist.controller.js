@@ -2,6 +2,9 @@ app.controller('WishlistController', ['$scope', '$routeParams', 'Restangular', f
 
     $scope.wishlist_id = $routeParams.wishlistId;
 
+    $scope.countdown = 0;
+    $scope.boxNumber = false;
+
     $scope.on_cart = function () {
         var res = 0;
 
@@ -29,5 +32,17 @@ app.controller('WishlistController', ['$scope', '$routeParams', 'Restangular', f
             return wishlist.id == $scope.wishlist_id;
         });
     });
+
+    $scope.request_box = function () {
+        $scope.countdown = 10
+        var interval = setInterval(function(){
+            $scope.countdown = $scope.countdown - 1;
+            if($scope.countdown == 0){
+                clearInterval(interval);
+                $scope.boxNumber = 50;
+            }
+            $scope.$apply()
+        }, 1000)
+    }
 
 }]);

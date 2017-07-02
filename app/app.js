@@ -1,52 +1,82 @@
-var app = angular.module("aloloco", ["ngRoute", "restangular", "pascalprecht.translate"]);
+var app = angular.module("aloloco", [
+    "ngRoute",
+    "restangular",
+    "pascalprecht.translate",
+    "auth0",
+    "angular-storage",
+    "angular-jwt",
+    'tmh.dynamicLocale',
+    'ngAnimate',
+    'toastr'
+]);
 
-app.config(function ($routeProvider, RestangularProvider, $translateProvider) {
-    // $authProvider.google({
-    //     clientId: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com'
-    // });
-    // $authProvider.google({
-    //     url: '/auth/google',
-    //     authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-    //     redirectUri: window.location.origin,
-    //     requiredUrlParams: ['scope'],
-    //     optionalUrlParams: ['display'],
-    //     scope: ['profile', 'email'],
-    //     responseType: "token",
-    //     scopePrefix: 'openid',
-    //     scopeDelimiter: ' ',
-    //     display: 'popup',
-    //     oauthType: '2.0',
-    //     popupOptions: {width: 452, height: 633}
-    // });
-
-    $translateProvider.translations('en', {
-        'menu': {
-            'home': 'Home',
-            'new_wishlist': 'New wishlist',
-            'new_offer': 'New offer',
-            'import': 'Import',
-            'history': 'History',
-            'profile': 'Profile',
-            'logout': 'Log out',
+app.run(function ($rootScope, auth, store, jwtHelper, $window) {
+    $rootScope.$on('$routeChangeStart', function () {
+        var token = store.get('id_token');
+        if (token !== null && !jwtHelper.isTokenExpired(token)) {
+            auth.authenticate(store.get('profile'), token);
         }
-    })
+    });
+});
+
+
+app.config(function ($routeProvider,
+                     RestangularProvider,
+                     $translateProvider,
+                     authProvider,
+                     tmhDynamicLocaleProvider) {
+
+    authProvider.init({
+        domain: 'alolocogrupoe.auth0.com',
+        clientID: 'X9RiuKF_oZnkFQ9sRnXUah051YwqJGm0'
+    });
+
+    $translateProvider
+        .translations('en', {
+            'menu': {
+                'home': 'Home',
+                'new_wishlist': 'New wishlist',
+                'new_offer': 'New offer',
+                'offers': 'Offers',
+                'import': 'Import',
+                'history': 'History',
+                'profile': 'Profile',
+                'logout': 'Log out',
+            }
+        })
         .translations('es', {
             'menu': {
                 'home': 'Inicio',
                 'new_wishlist': 'Nueva lista',
                 'new_offer': 'Nueva promoción',
+                'offers': 'Ofertas',
                 'import': 'Importar',
                 'history': 'Historial',
                 'profile': 'Perfil',
                 'logout': 'Cerrar Sesion',
             }
         })
-        .preferredLanguage('es');
+        .preferredLanguage('es')
+        .useSanitizeValueStrategy(null);
+
+    tmhDynamicLocaleProvider.localeLocationPattern('/components/angular-i18n/angular-locale_{{locale}}.js');
 
     $routeProvider
         .when("/", {
             templateUrl: "views/home.html",
-            controller: "HomeController"
+            controller: "HomeController",
+            resolve: {
+                load: function (store, $window) {
+                    var token = store.get('id_token');
+                    if (token == null) {
+                        $window.location.href = '/login.html';
+                    }
+                }
+            }
+        })
+        .when("/login", {
+            templateUrl: "views/login.html",
+            controller: "LoginController"
         })
         .when("/users/:userId/wishlists/create", {
             templateUrl: "views/wishlist-form.html",
@@ -64,13 +94,17 @@ app.config(function ($routeProvider, RestangularProvider, $translateProvider) {
             templateUrl: "views/delivery.html",
             controller: "DeliveryController"
         })
-        .when("/map", {
-            templateUrl: "views/map.html",
-            controller: "MapController"
+        // .when("/map", {
+        //     templateUrl: "views/map.html",
+        //     controller: "MapController"
+        // })
+        .when("/offers", {
+            templateUrl: "views/offers.html",
+            controller: "OfferController"
         })
         .when("/offers/create", {
             templateUrl: "views/offer-form.html",
-            controller: "MapController"
+            controller: "OfferCreationController"
         })
         .when("/admin/import", {
             templateUrl: "views/import.html",
@@ -81,41 +115,36 @@ app.config(function ($routeProvider, RestangularProvider, $translateProvider) {
 
 });
 
-app.controller('MainController', function ($scope, $translate) {
+app.controller('MainController', function ($rootScope, $scope, $translate, auth, store, tmhDynamicLocale, $locale, $window) {
 
     $scope.changeLanguage = function (key) {
+        var locale;
+        if (key == 'en') {
+            locale = 'en-us';
+        } else if (key == 'es') {
+            locale = 'es-ar';
+        }
         $translate.use(key);
+        $rootScope.$locale = $locale;
+        $rootScope.changeLocale = tmhDynamicLocale.set(locale);
     };
 
-    // $scope.authenticated = true;
-    //
-    // $scope.authenticate = function (provider) {
-    //     $auth.authenticate(provider)
-    //         .then(function (response) {
-    //             $auth.setToken(response);
-    //             console.log($auth.isAuthenticated());
-    //         })
-    //         .catch(function (response) {
-    //         });
-    // };
+    $scope.auth = auth;
 
-//
-// gapi.load('auth2', function () {
-//     auth2 = gapi.auth2.init({
-//         client_id: '590295520687-gop8hq463v30p58n59jt1nqoahukougs.apps.googleusercontent.com',
-//         cookiepolicy: 'single_host_origin',
-//     });
-//     auth2.attachClickHandler('sign-in-button', {}, function (googleUser) {
-//         $scope.authenticated = true;
-//     }, function (error) {
-//         alert(JSON.stringify(error, undefined, 2));
-//     });
-// });
-//
-// $scope.signOut = function () {
-//     auth2.getAuthInstance().signOut().then(function () {
-//         $scope.authenticated = false;
-//     });
-// }
+    $scope.login = function () {
+        auth.signin({}, function (profile, token) {
+            store.set('profile', profile);
+            store.set('id_token', token);
+        }, function (error) {
+            console.log(error);
+        });
+    }
+
+    $scope.logout = function () {
+        store.remove('profile');
+        store.remove('id_token');
+        auth.signout();
+        $window.location.href = '/login.html';
+    }
 
 });

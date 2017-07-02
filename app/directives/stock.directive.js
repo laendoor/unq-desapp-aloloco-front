@@ -21,6 +21,7 @@ app.directive('stock', function () {
                     if (stocked.id == product.id) {
                         product.selected = true;
                         product.desired = scope.amount;
+                        scope.$parent.displayRelateds(product.id)
                     }
                 });
             }

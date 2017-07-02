@@ -23,6 +23,12 @@
     "bootstrap": "^3.3.7",
     "angular-i18n": "^1.6.4",
     "font-awesome": "fontawesome#^4.7.0",
-    "angular-translate": "^2.15.2"
+    "angular-translate": "^2.15.2",
+    "a0-angular-storage": "^0.0.15",
+    "auth0-angular": "^4.2.7",
+    "auth0-lock": "9.2.2",
+    "angular-dynamic-locale": "^0.1.32",
+    "angular-toastr": "^2.1.1",
+    "angular-animate": "^1.6.4",
   }
 }

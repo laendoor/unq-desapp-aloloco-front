@@ -31,6 +31,12 @@
         <p ng-show="selected().length == 0">Aún no hay productos seleccionados</p>
         <hr>
         <button class="btn-primary btn">Guardar</button>
+        <div class="related" ng-if="relatedProducts.length > 0">
+        Tal vez te interese agregar...
+            <div ng-repeat="related in relatedProducts">
+                {{ related.name }}
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">

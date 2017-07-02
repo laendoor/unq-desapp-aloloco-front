@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A Lo Loco - Login</title>
+    <script src="/components/angular/angular.js"></script>
+    <script src="/components/auth0-lock/build/auth0-lock.js"></script>
+    <script src="/components/a0-angular-storage/dist/angular-storage.js"></script>
+    <script src="/components/auth0-angular/build/auth0-angular.js"></script>
+    <script src="login.app.js"></script>
+    <link rel="stylesheet" href="/components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body ng-app="ALoLocoLogin">
+<div class="container" ng-controller="LoginController">
+    <div class="holder">
+        <div class="logo">
+            <img src="/assets/img/logo.png" alt="">
+        </div>
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <p id="profile-name" class="profile-name-card">Bienvenido!</p> <br>
+                <p>Para continuar debes iniciar sesión, hace click en el siguiente boton e ingresa.</p> <br>
+                <button ng-click="login()" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

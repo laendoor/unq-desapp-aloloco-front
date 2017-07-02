@@ -6,21 +6,27 @@
         <form>
             <div class="form-group">
                 <label for="">Categoría</label>
-                <select class="form-control" name="" id="">
+                <select ng-model="category_id" class="form-control" name="" id="">
                     <option value="">Seleccionar</option>
-                    <option value="">Gaseosas</option>
-                    <option value="">Cereales</option>
-                    <option value="">Electrodomesticos</option>
+                    <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="">Descuento</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" aria-describedby="basic-addon2">
+                    <input ng-model="percentage" type="text" class="form-control" aria-describedby="basic-addon2">
                     <span class="input-group-addon" id="basic-addon2">%</span>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="">Desde</label>
+                <input ng-model="valid_from" class="form-control" type="date">
+            </div>
+            <div class="form-group">
+                <label for="">Hasta</label>
+                <input ng-model="valid_to" class="form-control" type="date">
+            </div>
         </form>
-        <button class="btn btn-block btn-primary" ng-click="">Crear</button>
+        <button class="btn btn-block btn-primary" ng-click="submit()">Crear</button>
     </div>
 </div>

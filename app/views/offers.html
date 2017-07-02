@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1>Ofertas</h1>
+        </div>
+    </div>
+    <div class="offer col-md-3" ng-repeat="offer in offers">
+        <img ng-src="https://unsplash.it/600/600" alt="" class="img-responsive">
+        <strong>Categoría:</strong> {{ offer.category }} <br>
+        <strong>Descuento:</strong> {{ offer.percentage }}% <br>
+        <strong>Valida desde:</strong> {{ offer.valid_from | date }} <br>
+        <strong>Valida hasta:</strong> {{ offer.valid_to | date }} <br>
+    </div>
+</div>

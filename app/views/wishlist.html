@@ -9,10 +9,12 @@
     <div class="col-sm-12 wishlist-buttons">
         <a href="/#!/users/1/wishlists/1/delivery" class="btn btn-primary pull-left">Quiero que me lo envien a
             domicilio!</a>
-        <a ng-if="on_cart() == wishlist.products.length" id="request-box" class="btn btn-success pull-left" href="">Solicitar Caja</a>
+        <button ng-if="on_cart() == wishlist.products.length" id="request-box" class="btn btn-success pull-left"
+                ng-click="request_box()">Solicitar Caja
+        </button>
         <p class="on-cart pull-right">En carrito (<span>{{ on_cart() }}</span>)</p>
     </div>
-    <div class="col-md-4 product" ng-repeat="product in wishlist.products" ng-if="! product.on_cart" >
+    <div class="col-md-4 product" ng-repeat="product in wishlist.products" ng-if="! product.on_cart">
         <div class="row">
             <div class="col-md-4">
                 <div class="thumbnail">
@@ -29,6 +31,15 @@
                     </button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="countdown" ng-if="countdown > 0">
+            La caja ha sido solicitada! <br>
+            Tiempo de espera: <span>{{ countdown }}</span> segundos
+        </div>
+        <div class="box-result" ng-if="boxNumber">
+            Ya podes pasar por la caja {{ boxNumber }}
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-app.controller('ImportController', ['$scope', '$http', function ($scope, $http) {
+app.controller('ImportController', function ($scope, $http, toastr) {
 
     $scope.uploadFile = function () {
         $.ajax({
@@ -8,7 +8,11 @@ app.controller('ImportController', ['$scope', '$http', function ($scope, $http) 
             cache: false,
             contentType: false,
             processData: false,
+        }).done(function () {
+            toastr.success('Bien hecho!', 'La importación se realizo con éxito.');
+        }).fail(function () {
+            toastr.error('Oops!', 'Sucedió un error, intenta de nuevo!.')
         });
     }
 
-}]);
+});
