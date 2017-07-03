@@ -1,137 +1,155 @@
-body {
-    padding-bottom: 50px;
+.login-footer {
+    padding: 0 40px;
 }
 
-header {
-    background: url('../img/header.jpg') center center;
-    background-size: cover;
-    height: 200px;
+.wishlists .wishlist {
+    margin-bottom: 10px;
 }
 
-header .menu {
-    margin-top: 20px;
-}
-
-header .desktop-menu > li > a {
-    color: white;
-    font-weight: bold;
-}
-
-header .menu.nav > li > a:focus,
-header .menu.nav > li > a:hover {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-header .logo {
-    display: block;
-    margin-top: 23px;
-    margin-left: 5px;
-}
-
-#map {
-    height: 400px;
-    margin-bottom: 20px;
-}
-
-.stock-product {
-    margin-bottom: 15px;
-}
-
-.stock-product .meta {
-    height: 80px;
-}
-
-.dropdown > a {
-    cursor: pointer;
-}
-
-.dropdown.open > a,
-header .menu .dropdown-toggle:hover,
-header .menu .dropdown-toggle:focus {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-}
-
-header .menu .dropdown-toggle {
-    color: #fff;
-    font-weight: bold;
-}
-
-header .desktop-menu .dropdown-toggle {
-    display: block;
-    padding: 10px;
-}
-
-header .desktop-menu img {
-    height: 18px;
-    border-radius: 50%;
-    margin-right: 4px;
-    position: relative;
-    top: -1px;
-}
-
-.history {
-    background: #f8f8f8;
-    display: block;
-    padding: 10px;
-    margin-bottom: 30px;
-}
-
-.history .products {
-    margin-top: 10px;
-    margin-bototm: 0;
-}
-
-.history .view-products {
-    cursor: pointer;
-}
-
-.history .products.expanded {
-    max-height: 100px;
-}
-
-.history .products.collapsed {
-    max-height: 0;
-}
-
-.history .name {
-    margin-top: 0;
-}
-
-.history .info {
-    padding: 10px;
-}
-
-.on-cart {
-    font-weight: bold;
-    margin: 0;
-    font-size: 24px;
-}
-
-.add-to-cart {
-    margin-top: 5px;
-}
-
-#request-box{
-    margin-left: 10px;
-}
-
-.wishlist-buttons {
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.exceded {
-    color: red;
-}
-
-.pagination {
+.wishlists .wishlist h2 {
     text-align: center;
-    width: 100%;
+    text-transform: uppercase;
+    font: 700 14px/21px "Open Sans", sans-serif;
+    color: #474747;
+    padding-top: 5px;
+    display: block;
+    clear: both;
 }
 
-@media only screen and (max-width: 768px) {
+/*body {*/
+/*padding-bottom: 50px;*/
+/*}*/
 
-}
+/*header {*/
+/*background: url('../img/header.jpg') center center;*/
+/*background-size: cover;*/
+/*height: 200px;*/
+/*}*/
+
+/*header .menu {*/
+/*margin-top: 20px;*/
+/*}*/
+
+/*header .desktop-menu > li > a {*/
+/*color: white;*/
+/*font-weight: bold;*/
+/*}*/
+
+/*header .menu.nav > li > a:focus,*/
+/*header .menu.nav > li > a:hover {*/
+/*background: rgba(0, 0, 0, 0.5);*/
+/*}*/
+
+/*header .logo {*/
+/*display: block;*/
+/*margin-top: 23px;*/
+/*margin-left: 5px;*/
+/*}*/
+
+/*#map {*/
+/*height: 400px;*/
+/*margin-bottom: 20px;*/
+/*}*/
+
+/*.stock-product {*/
+/*margin-bottom: 15px;*/
+/*}*/
+
+/*.stock-product .meta {*/
+/*height: 80px;*/
+/*}*/
+
+/*.dropdown > a {*/
+/*cursor: pointer;*/
+/*}*/
+
+/*.dropdown.open > a,*/
+/*header .menu .dropdown-toggle:hover,*/
+/*header .menu .dropdown-toggle:focus {*/
+/*background: rgba(0, 0, 0, 0.5);*/
+/*color: white;*/
+/*text-decoration: none;*/
+/*border-radius: 4px;*/
+/*}*/
+
+/*header .menu .dropdown-toggle {*/
+/*color: #fff;*/
+/*font-weight: bold;*/
+/*}*/
+
+/*header .desktop-menu .dropdown-toggle {*/
+/*display: block;*/
+/*padding: 10px;*/
+/*}*/
+
+/*header .desktop-menu img {*/
+/*height: 18px;*/
+/*border-radius: 50%;*/
+/*margin-right: 4px;*/
+/*position: relative;*/
+/*top: -1px;*/
+/*}*/
+
+/*.history {*/
+/*background: #f8f8f8;*/
+/*display: block;*/
+/*padding: 10px;*/
+/*margin-bottom: 30px;*/
+/*}*/
+
+/*.history .products {*/
+/*margin-top: 10px;*/
+/*margin-bototm: 0;*/
+/*}*/
+
+/*.history .view-products {*/
+/*cursor: pointer;*/
+/*}*/
+
+/*.history .products.expanded {*/
+/*max-height: 100px;*/
+/*}*/
+
+/*.history .products.collapsed {*/
+/*max-height: 0;*/
+/*}*/
+
+/*.history .name {*/
+/*margin-top: 0;*/
+/*}*/
+
+/*.history .info {*/
+/*padding: 10px;*/
+/*}*/
+
+/*.on-cart {*/
+/*font-weight: bold;*/
+/*margin: 0;*/
+/*font-size: 24px;*/
+/*}*/
+
+/*.add-to-cart {*/
+/*margin-top: 5px;*/
+/*}*/
+
+/*#request-box{*/
+/*margin-left: 10px;*/
+/*}*/
+
+/*.wishlist-buttons {*/
+/*overflow: hidden;*/
+/*margin-bottom: 20px;*/
+/*}*/
+
+/*.exceded {*/
+/*color: red;*/
+/*}*/
+
+/*.pagination {*/
+/*text-align: center;*/
+/*width: 100%;*/
+/*}*/
+
+/*@media only screen and (max-width: 768px) {*/
+
+/*}*/

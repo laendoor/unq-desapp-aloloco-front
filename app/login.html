@@ -1,34 +1,83 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>A Lo Loco - Login</title>
+    <title>ALoLoco - Log in</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+          type="text/css"/>
+    <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/plugins/socicon/socicon.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/global/css/components-rounded.min.css" rel="stylesheet" id="style_components"
+          type="text/css"/>
+    <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/pages/css/login-5.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/pages/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="favicon.ico"/>
+
+    <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="/assets/global/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+    <script src="/assets/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="/assets/pages/scripts/login-5.js" type="text/javascript"></script>
+
     <script src="/components/angular/angular.js"></script>
     <script src="/components/auth0-lock/build/auth0-lock.js"></script>
     <script src="/components/a0-angular-storage/dist/angular-storage.js"></script>
     <script src="/components/auth0-angular/build/auth0-angular.js"></script>
+
     <script src="login.app.js"></script>
-    <link rel="stylesheet" href="/components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/login.css">
 </head>
-<body ng-app="ALoLocoLogin">
-<div class="container" ng-controller="LoginController">
-    <div class="holder">
-        <div class="logo">
-            <img src="/assets/img/logo.png" alt="">
-        </div>
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
-            <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <p id="profile-name" class="profile-name-card">Bienvenido!</p> <br>
-                <p>Para continuar debes iniciar sesión, hace click en el siguiente boton e ingresa.</p> <br>
-                <button ng-click="login()" class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Iniciar Sesión</button>
-            </form>
+<body ng-app="ALoLocoLogin" class="login">
+<div ng-controller="LoginController">
+    <div class="user-login-5">
+        <div class="row bs-reset">
+            <div class="col-md-6 bs-reset mt-login-5-bsfix">
+                <div class="login-bg" style="background-image:url('http://lorempixel.com/1200/1080/food/')">
+                    <img width="60" class="login-logo" src="/assets/pages/img/aloloco-logo.png"/></div>
+            </div>
+            <div class="col-md-6 login-container bs-reset mt-login-5-bsfix">
+                <div class="login-content">
+                    <h1>¡Bienvenido a ALoLoco!</h1>
+                    <p>¿Cansado de hacer filas interminables en el super mercado? Somos la app que te va a devolver todo
+                        ese
+                        tiempo que estas perdiendo.</p>
+                    <p>Para continuar debes iniciar sesión. Podes hacerlo con las siguientes redes:</p>
+                    <br>
+                    <div class="socicons">
+                        <a href="#"
+                           class="socicon-btn socicon-btn-circle socicon-solid bg-red font-white bg-hover-grey-salsa socicon-google tooltips"
+                           data-original-title="Google"
+                           ng-click="login()"></a>
+                        <a href="#"
+                           class="socicon-btn socicon-btn-circle socicon-solid bg-blue font-white bg-hover-grey-salsa socicon-twitter tooltips"
+                           data-original-title="Twitter"></a>
+                        <a href="#"
+                           class="socicon-btn socicon-btn-circle socicon-solid bg-blue-soft font-white bg-hover-grey-salsa socicon-facebook tooltips"
+                           data-original-title="Facebook"></a>
+                    </div>
+                </div>
+                <div class="login-footer">
+                    <div class="login-copyright">
+                        <p>Desarrollado por Alan Matkorski y Leandro Di Lorenzo</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

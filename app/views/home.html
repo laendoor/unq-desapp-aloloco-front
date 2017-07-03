@@ -1,16 +1,30 @@
-<div class="row">
-    <div class="col-md-12">
-        <div class="page-header">
-            <h1>Listas de compras</h1>
-        </div>
-    </div>
-    <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="wishlist in wishlists">
-        <div class="thumbnail">
-            <img ng-src="{{ wishlist.products[0].image }}?v={{ $index }}" alt="">
-            <div class="caption">
-                <h4>{{ wishlist.name }}</h4>
-                <p><a href="#!/users/1/wishlists/{{ wishlist.id }}" class="btn btn-block btn-primary"
-                      role="button">Ver</a></p>
+<h1 class="page-title"> Bienvenido!
+</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="index.html">Home</a>
+        </li>
+    </ul>
+</div>
+<div class="wishlists">
+    <div class="mt-element-overlay">
+        <div class="row">
+            <img alt="">
+            <div class="col-md-3 col-sm-4 col-xs-6 wishlist" ng-repeat="wishlist in wishlists track by $index">
+                <div class="mt-overlay-1">
+                    <img src="http://lorempixel.com/800/800/food?v={{ $index }}"/>
+                    <div class="mt-overlay">
+                        <ul class="mt-info">
+                            <li>
+                                <a class="btn default btn-outline" href="#!/users/1/wishlists/{{ wishlist.id }}"><i
+                                        class="icon-magnifier"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <h2>{{ wishlist.name }}</h2>
             </div>
         </div>
     </div>
