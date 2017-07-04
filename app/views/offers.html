@@ -1,8 +1,8 @@
-<h1 class="page-title"> Promociones</h1>
+<h1 class="page-title"> {{ 'menu.offers' | translate }}</h1>
 <div class="page-bar">
     <ul class="page-breadcrumb">
-        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
-        <li><a href="">Promociones</a></li>
+        <li><i class="icon-home"></i> <a href="index.html">{{ 'menu.home' | translate }}</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="">{{ 'menu.offers' | translate }}</a></li>
     </ul>
 </div>
 <div class="row search-content-3">
@@ -15,9 +15,9 @@
                 <h3 class="ng-binding">{{ offer.category.name }}</h3>
                 <div class="tile-desc">
                     <p class="ng-binding">
-                        <strong>Descuento:</strong> {{offer.percentage}}%<br>
-                        <strong>Desde:</strong> {{offer.valid_from | date}}<br>
-                        <strong>Hasta:</strong> {{offer.valid_to | date}}
+                        <strong>{{ 'offers.discount' | translate }}:</strong> {{offer.percentage}}%<br>
+                        <strong>{{ 'offers.valid_from' | translate }}:</strong> {{offer.valid_from | date}}<br>
+                        <strong>{{ 'offers.valid_to' | translate }}:</strong> {{offer.valid_to | date}}
                     </p>
                 </div>
             </div>

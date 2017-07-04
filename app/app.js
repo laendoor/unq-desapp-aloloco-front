@@ -47,6 +47,14 @@ app.config(function ($routeProvider,
                 'logout': 'Log out',
                 'english': 'English',
                 'spanish': 'Spanish'
+            },
+            'home' : {
+                'welcome' : 'Welcome!'
+            },
+            'offers' : {
+                'discount' : 'Discount:',
+                'valid_from' : 'Valid from:',
+                'valid_to' : 'Valid to:'
             }
         })
         .translations('es', {
@@ -64,6 +72,14 @@ app.config(function ($routeProvider,
                 'logout': 'Cerrar Sesión',
                 'english': 'Ingles',
                 'spanish': 'Español'
+            },
+            'home' : {
+                'welcome' : 'Bienvenido!'
+            },
+            'offers' : {
+                'discount' : 'Discount:',
+                'valid_from' : 'Valid from:',
+                'valid_to' : 'Valid to:'
             }
         })
         .preferredLanguage('es')
