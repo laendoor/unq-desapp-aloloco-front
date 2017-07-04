@@ -1,1 +1,1 @@
-var API_ROUTE = 'http://api.aloloco.dev';
+var API_ROUTE = 'https://aloloco-grupo-e.herokuapp.com';
