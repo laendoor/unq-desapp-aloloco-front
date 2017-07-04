@@ -77,9 +77,9 @@ app.config(function ($routeProvider,
                 'welcome' : 'Bienvenido!'
             },
             'offers' : {
-                'discount' : 'Discount:',
-                'valid_from' : 'Valid from:',
-                'valid_to' : 'Valid to:'
+                'discount' : 'Descuento:',
+                'valid_from' : 'Valido desde:',
+                'valid_to' : 'Valido hasta:'
             }
         })
         .preferredLanguage('es')
