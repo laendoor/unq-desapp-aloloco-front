@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="aloloco">
+<html lang="es" ng-app="aloloco">
 <head>
     <script>
         if (localStorage.getItem("id_token") == null) {
@@ -27,6 +27,7 @@
     <link href="assets/layouts/layout2/css/layout.min.css" rel="stylesheet" type="text/css"/>
     <link href="assets/layouts/layout2/css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color"/>
     <link href="assets/layouts/layout2/css/custom.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/pages/css/search.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/components/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
@@ -47,45 +48,38 @@
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
-                            <img alt="" class="img-circle" src="assets/layouts/layout2/img/avatar3_small.jpg"/>
-                            <span class="username username-hide-on-mobile"> Alan </span>
+                            <img alt="" class="img-circle" ng-src="{{ profile.picture }}"/>
+                            <span class="username username-hide-on-mobile"> {{ profile.given_name }} {{ profile.family_name }}</span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
-                                <a href="page_user_profile_1.html">
-                                    <i class="icon-user"></i> My Profile </a>
+                                <a href="/#!/profile">
+                                    <i class="icon-user"></i> {{ 'menu.profile' | translate }}</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="page_user_login_1.html">
-                                    <i class="icon-key"></i> Log Out </a>
+                                <a href="#" ng-click="logout()">
+                                    <i class="icon-key"></i> {{ 'menu.logout' | translate }}</a>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown dropdown-language">
-                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
-                           data-close-others="true">
-                            <img alt="" src="assets/global/img/flags/us.png"> <span class="langname"> US </span> <i
-                                class="fa fa-angle-down"></i>
+                    <li>
+                        <a style="padding:24px 12px;" href="" ng-click="changeLanguage('en')">
+                            <img alt="" src="assets/global/img/flags/us.png"> <span class="langname"> {{ 'menu.english' | translate }}</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="javascript:;">
-                                    <img alt="" src="assets/global/img/flags/es.png"> Spanish </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a style="padding:24px 12px;" href="" ng-click="changeLanguage('es')">
+                            <img alt="" src="assets/global/img/flags/es.png"> {{ 'menu.spanish' | translate }}
+                        </a>
                     </li>
                     <li class="dropdown dropdown-extended quick-sidebar-toggler">
-                        <span class="sr-only">Toggle Quick Sidebar</span>
-                        <i class="icon-logout"></i>
+                        <i ng-click="logout()" class="icon-logout"></i>
                     </li>
-                    <!-- END QUICK SIDEBAR TOGGLER -->
                 </ul>
             </div>
-            <!-- END TOP NAVIGATION MENU -->
         </div>
-        <!-- END PAGE TOP -->
     </div>
 </div>
 <div class="clearfix"></div>
@@ -95,27 +89,27 @@
             <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false"
                 data-auto-scroll="true" data-slide-speed="200">
                 <li class="nav-item start ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
+                    <a href="/#!/" class="nav-link nav-toggle">
                         <i class="icon-home"></i>
-                        <span class="title">Inicio</span>
+                        <span class="title">{{ 'menu.home' | translate }}</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-notebook"></i>
-                        <span class="title">Listas</span>
+                        <span class="title">{{ 'menu.wishlists' | translate }}</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="ui_colors.html" class="nav-link ">
-                                <span class="title">Ver todas</span>
+                            <a href="#" class="nav-link ">
+                                <span class="title">{{ 'menu.all_wishlists' | translate }}</span>
                             </a>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="ui_metronic_grid.html" class="nav-link ">
-                                <span class="title">Crear nueva</span>
+                        <li class="nav-item">
+                            <a href="/#!/users/1/wishlists/create" class="nav-link">
+                                <span class="title">{{ 'menu.new_wishlist' | translate }}</span>
                             </a>
                         </li>
                     </ul>
@@ -123,33 +117,33 @@
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-diamond"></i>
-                        <span class="title">Promociones</span>
+                        <span class="title">{{ 'menu.offers' | translate }}</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li class="nav-item  ">
-                            <a href="ui_colors.html" class="nav-link ">
-                                <span class="title">Ver todas</span>
+                            <a href="/#!/offers" class="nav-link ">
+                                <span class="title">{{ 'menu.all_offers' | translate }}</span>
                             </a>
                         </li>
                         <li class="nav-item  ">
-                            <a href="ui_metronic_grid.html" class="nav-link ">
-                                <span class="title">Crear nueva</span>
+                            <a href="/#!/offers/create" class="nav-link ">
+                                <span class="title">{{ 'menu.new_offer' | translate }}</span>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
+                    <a href="/#!/users/1/history" class="nav-link nav-toggle">
                         <i class="icon-tag"></i>
-                        <span class="title">Historial</span>
+                        <span class="title">{{ 'menu.history' | translate }}</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
                 <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
+                    <a href="/#!/admin/import" class="nav-link nav-toggle">
                         <i class="icon-cloud-upload"></i>
-                        <span class="title">Datos</span>
+                        <span class="title">{{ 'menu.data' | translate }}</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
@@ -747,51 +741,8 @@
 <div class="page-footer">
     <div class="page-footer-inner"> 2017 &copy; Desarrollado por Alan Matkorski y Leandro Di Lorenzo</div>
 </div>
-<!--<header>-->
-    <!--<div class="container-fluid">-->
-        <!--<div class="row">-->
-            <!--<div class="col-md-4">-->
-                <!--<a class="logo pull-left" href="/#!/"><img src="assets/img/logo.png" alt="" width="50"></a>-->
-            <!--</div>-->
-            <!--<div class="col-md-8">-->
-                <!--<ul class="pull-right menu desktop-menu nav nav-pills hidden-xs">-->
-                    <!--<li><a href="/#!/">{{ 'menu.home' | translate }}</a></li>-->
-                    <!--<li><a href="/#!/users/1/wishlists/create">{{ 'menu.new_wishlist' | translate }}</a></li>-->
-                    <!--<li><a href="/#!/offers/create">{{ 'menu.new_offer' | translate }}</a></li>-->
-                    <!--<li><a href="/#!/offers">{{ 'menu.offers' | translate }}</a></li>-->
-                    <!--<li><a href="/#!/admin/import">{{ 'menu.import' | translate }}</a></li>-->
-                    <!--<li><a href="/#!/users/1/history">{{ 'menu.history' | translate }}</a></li>-->
-                    <!--<li>-->
-                        <!--<div class="dropdown">-->
-                            <!--<a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"-->
-                               <!--aria-haspopup="true" aria-expanded="true"> <img src="/assets/img/gmail.png" alt=""> Alan-->
-                                <!--<span class="caret"></span>-->
-                            <!--</a>-->
-                            <!--<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">-->
-                                <!--<li><a href="/#!/profile">Perfil</a></li>-->
-                                <!--<li role="separator" class="divider"></li>-->
-                                <!--<li><a ng-click="changeLanguage('en')">Ingles</a></li>-->
-                                <!--<li><a ng-click="changeLanguage('es')">Español</a></li>-->
-                                <!--<li role="separator" class="divider"></li>-->
-                                <!--<li><a href="#" ng-click="logout()">{{ 'menu.logout' | translate }}</a></li>-->
-                            <!--</ul>-->
-                        <!--</div>-->
-                    <!--</li>-->
-                <!--</ul>-->
-                <!--<div class="btn-group pull-right visible-xs menu">-->
-                    <!--<button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown"-->
-                            <!--aria-haspopup="true" aria-expanded="false">-->
-                        <!--Menu <span class="caret"></span>-->
-                    <!--</button>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="/#!/admin/import">Importar</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</header>-->
 <script src="vars.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaN1qWHfgHfgYV62ltnt7FIaifUn5pB7I"></script>
 <script src="/components/angular/angular.js"></script>
 <script src="/components/angular-i18n/angular-locale_es-ar.js"></script>
@@ -828,6 +779,7 @@
 <script src="/controllers/wishlist.controller.js"></script>
 <script src="/controllers/delivery.controller.js"></script>
 <script src="/controllers/wishlist.create.controller.js"></script>
+<script src="/controllers/profile.controller.js"></script>
 <script src="/controllers/offer.controller.js"></script>
 <script src="/controllers/offer.create.controller.js"></script>
 <script src="/controllers/import.controller.js"></script>

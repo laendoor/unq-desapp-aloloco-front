@@ -1,32 +1,50 @@
-<div class="row">
-    <div class="col-md-offset-4 col-md-4">
-        <div class="page-header">
-            <h1>Crear Oferta</h1>
+<h1 class="page-title">Crear Oferta</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        <li></i> <a href="index.html">Promociones</a> <i class="fa fa-angle-right"></i></li>
+        <li></i> <a href="index.html">Nueva</a></li>
+    </ul>
+</div>
+
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-equalizer font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Nueva Promoción</span>
         </div>
-        <form>
-            <div class="form-group">
-                <label for="">Categoría</label>
-                <select ng-model="category_id" class="form-control" name="" id="">
-                    <option value="">Seleccionar</option>
-                    <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="">Descuento</label>
-                <div class="input-group">
-                    <input ng-model="percentage" type="text" class="form-control" aria-describedby="basic-addon2">
-                    <span class="input-group-addon" id="basic-addon2">%</span>
+    </div>
+    <div class="portlet-body form">
+        <form novalidate>
+            <div class="form-body">
+                <div class="form-group">
+                    <label for="">Categoría</label>
+                    <select ng-model="category_id" class="form-control" name="" id="">
+                        <option value="">Seleccionar</option>
+                        <option ng-repeat="category in categories" value="{{ category.id }}">{{ category.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Descuento</label>
+                    <div class="input-group">
+                        <input ng-model="percentage" type="text" class="form-control" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2">%</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Desde</label>
+                    <input ng-model="valid_from" class="form-control" type="date">
+                </div>
+                <div class="form-group">
+                    <label for="">Hasta</label>
+                    <input ng-model="valid_to" class="form-control" type="date">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="">Desde</label>
-                <input ng-model="valid_from" class="form-control" type="date">
-            </div>
-            <div class="form-group">
-                <label for="">Hasta</label>
-                <input ng-model="valid_to" class="form-control" type="date">
+            <div class="form-actions">
+                <button class="btn green" ng-click="submit()">Guardar</button>
+                <img src="/assets/img/loader.gif" class="loader" alt="" ng-if="loading">
             </div>
         </form>
-        <button class="btn btn-block btn-primary" ng-click="submit()">Crear</button>
     </div>
 </div>

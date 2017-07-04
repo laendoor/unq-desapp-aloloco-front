@@ -1,12 +1,21 @@
-app.controller('WishlistCreationController', ['$scope', 'Restangular', function ($scope, Restangular) {
+app.controller('WishlistCreationController', function ($scope, Restangular, toastr, $location) {
 
     $scope.currentPage = 0;
-    $scope.pageSize = 6;
+    $scope.pageSize = 4;
     $scope.relatedProducts = [];
 
     Restangular.all('stock').customGET().then(function (stock) {
         $scope.stock = stock['data'];
     });
+
+    $scope.removeProductFromSelectedOnes = function (product) {
+        $scope.stock.forEach(function (stocked) {
+            if (stocked.id == product.id) {
+                product.selected = false;
+                product.desired = 0;
+            }
+        });
+    }
 
 
     $scope.displayRelateds = function (id) {
@@ -25,4 +34,9 @@ app.controller('WishlistCreationController', ['$scope', 'Restangular', function 
         });
     }
 
-}]);
+    $scope.submit = function(){
+        toastr.success('La lista fue creada', 'Bien hecho!')
+        $location.path('/')
+    }
+
+});

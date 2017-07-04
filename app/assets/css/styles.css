@@ -16,6 +16,31 @@
     clear: both;
 }
 
+.search-content-3 .tile-container > .tile-title i {
+    float: inherit;
+    font-size: inherit;
+}
+
+.search-content-3 .tile-container > .tile-title > .tile-desc > p {
+    margin: 10px 0 0;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+}
+
+.loader {
+    margin-left: 10px;
+}
+
+.history {
+    background: white;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
 /*body {*/
 /*padding-bottom: 50px;*/
 /*}*/

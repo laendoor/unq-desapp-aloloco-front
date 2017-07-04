@@ -35,25 +35,35 @@ app.config(function ($routeProvider,
         .translations('en', {
             'menu': {
                 'home': 'Home',
-                'new_wishlist': 'New wishlist',
-                'new_offer': 'New offer',
+                'wishlists': 'Wishlists',
+                'all_wishlists': 'View all',
+                'new_wishlist': 'Create new',
                 'offers': 'Offers',
-                'import': 'Import',
+                'all_offers': 'View all',
+                'new_offer': 'Create new',
                 'history': 'History',
+                'data': 'Data',
                 'profile': 'Profile',
                 'logout': 'Log out',
+                'english': 'English',
+                'spanish': 'Spanish'
             }
         })
         .translations('es', {
             'menu': {
                 'home': 'Inicio',
-                'new_wishlist': 'Nueva lista',
-                'new_offer': 'Nueva promoción',
-                'offers': 'Ofertas',
-                'import': 'Importar',
+                'wishlists': 'Listas',
+                'all_wishlists': 'Ver todas',
+                'new_wishlist': 'Crear nueva',
+                'offers': 'Promociones',
+                'all_offers': 'Ver todas',
+                'new_offer': 'Crear nueva',
                 'history': 'Historial',
+                'data': 'Datos',
                 'profile': 'Perfil',
-                'logout': 'Cerrar Sesion',
+                'logout': 'Cerrar Sesión',
+                'english': 'Ingles',
+                'spanish': 'Español'
             }
         })
         .preferredLanguage('es')
@@ -77,6 +87,10 @@ app.config(function ($routeProvider,
         .when("/login", {
             templateUrl: "views/login.html",
             controller: "LoginController"
+        })
+        .when("/profile", {
+            templateUrl: "views/profile.html",
+            controller: "ProfileController"
         })
         .when("/users/:userId/wishlists/create", {
             templateUrl: "views/wishlist-form.html",
@@ -116,6 +130,8 @@ app.config(function ($routeProvider,
 });
 
 app.controller('MainController', function ($rootScope, $scope, $translate, auth, store, tmhDynamicLocale, $locale, $window) {
+
+    $scope.profile = store.get('profile');
 
     $scope.changeLanguage = function (key) {
         var locale;

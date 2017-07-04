@@ -1,4 +1,4 @@
-app.directive('stock', function () {
+app.directive('stock', function (toastr) {
     return {
         restrict: 'E',
         templateUrl: 'directives/stock.html',
@@ -9,14 +9,13 @@ app.directive('stock', function () {
             scope.exceded_stock = false;
 
             scope.addProductToSelectedOnes = function (product) {
-
                 if (scope.amount > product.stock) {
-                    scope.exceded_stock = true;
+                    toastr.error('No tenemos suficiente stock', 'Cuidado!')
                     return;
                 } else {
+                    toastr.success('Se agrego el producto a la lista', 'Bien hecho!')
                     scope.exceded_stock = false;
                 }
-
                 scope.$parent.stock.forEach(function (stocked) {
                     if (stocked.id == product.id) {
                         product.selected = true;

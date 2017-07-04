@@ -1,14 +1,26 @@
-<div class="row">
-    <div class="col-xs-12">
-        <div class="page-header">
-            <h1>Ofertas</h1>
+<h1 class="page-title"> Promociones</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="">Promociones</a></li>
+    </ul>
+</div>
+<div class="row search-content-3">
+    <div class="offer col-md-3" ng-repeat="offer in offers track by $index">
+        <div class="tile-container">
+            <div class="tile-thumbnail">
+                <img ng-src="http://lorempixel.com/400/400/food/?v={{ $index}}" src="http://lorempixel.com/400/400/food/?91967">
+            </div>
+            <div class="tile-title">
+                <h3 class="ng-binding">{{ offer.category.name }}</h3>
+                <div class="tile-desc">
+                    <p class="ng-binding">
+                        <strong>Descuento:</strong> {{offer.percentage}}%<br>
+                        <strong>Desde:</strong> {{offer.valid_from | date}}<br>
+                        <strong>Hasta:</strong> {{offer.valid_to | date}}
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="offer col-md-3" ng-repeat="offer in offers">
-        <img ng-src="https://unsplash.it/600/600" alt="" class="img-responsive">
-        <strong>Categoría:</strong> {{ offer.category }} <br>
-        <strong>Descuento:</strong> {{ offer.percentage }}% <br>
-        <strong>Valida desde:</strong> {{ offer.valid_from | date }} <br>
-        <strong>Valida hasta:</strong> {{ offer.valid_to | date }} <br>
     </div>
 </div>

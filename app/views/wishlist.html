@@ -1,45 +1,52 @@
+<h1 class="page-title">{{ wishlist.name }}</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="">Listas</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="index.html">{{ wishlist.name }}</a></li>
+    </ul>
+</div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="page-header">
-            <h1>{{ wishlist.name }}</h1>
+    <div class="col-xs-12">
+        <p>Esta es tu lista <strong>{{wishlist.name}}</strong>, podes ir marcando los productos a medida que los tengas
+            en tu carrito, cuando hayas terminado con todos vas a poder solicitar una caja. También podes solicitar que
+            te lo <a href="/#!/users/1/wishlists/1/delivery">envien a domicilio</a> si no tenes ganas de salir de casa!
+        </p>
+    </div>
+</div>
+<div class="row search-content-3">
+    <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="product in wishlist.products" ng-if="! product.on_cart">
+        <div class="tile-container">
+            <div class="tile-thumbnail">
+                <img ng-src="{{ product.image }}">
+            </div>
+            <div class="tile-title">
+                <h3>{{ product.name }}</h3>
+                <div class="tile-desc">
+                    <p><strong>Marca:</strong> {{ product.brand }} <br>
+                        <strong>Cantidad:</strong> {{ product.quantity}}</p>
+                </div>
+                <br>
+                <button ng-click="addToCart(product.id)" class="btn green btn-block">Agregar <i class="fa fa-cart-plus"
+                                                                                                aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12 wishlist-buttons">
-        <a href="/#!/users/1/wishlists/1/delivery" class="btn btn-primary pull-left">Quiero que me lo envien a
-            domicilio!</a>
-        <button ng-if="on_cart() == wishlist.products.length" id="request-box" class="btn btn-success pull-left"
-                ng-click="request_box()">Solicitar Caja
-        </button>
-        <p class="on-cart pull-right">En carrito (<span>{{ on_cart() }}</span>)</p>
-    </div>
-    <div class="col-md-4 product" ng-repeat="product in wishlist.products" ng-if="! product.on_cart">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <img ng-src="{{ product.image }}">
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="meta ng-binding">
-                    <strong>Nombre:</strong> {{ product.name }}<br>
-                    <strong>Marca:</strong> {{ product.brand }} <br>
-                    <strong>Cantidad:</strong> {{ product.quantity }} <br>
-                    <button class="add-to-cart btn btn-sm btn-default"
-                            ng-click="addToCart(product.id)">Agregar al carrito
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12">
-        <div class="countdown" ng-if="countdown > 0">
-            La caja ha sido solicitada! <br>
-            Tiempo de espera: <span>{{ countdown }}</span> segundos
-        </div>
-        <div class="box-result" ng-if="boxNumber">
-            Ya podes pasar por la caja {{ boxNumber }}
-        </div>
-    </div>
+<div class="note note-success" ng-if="on_cart() == wishlist.products.length">
+    <h4 class="block">Bien hecho!</h4>
+    <p>Ya tenes todos los productos en tu carrito. Solicita una caja!</p>
+    <br ng-if="countdown == 0">
+    <button ng-if="countdown == 0" class="btn btn-default" ng-click="request_box()">Solicitar caja</button>
+</div>
+
+<div class="note note-info" ng-if="countdown > 0">
+    <h4>La caja ha sido solicitada!</h4>
+    Tiempo de espera: <span>{{ countdown }}</span> segundos
+</div>
+
+<div class="note note-success" ng-if="boxNumber && countdown == 0">
+    <h4>Ya podes pasar por la caja {{ boxNumber }}!</h4>
+    <p>Gracias por usar ALoLoco.</p>
 </div>

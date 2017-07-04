@@ -1,13 +1,33 @@
-<div class="row">
-    <div class="col-md-offset-4 col-md-4">
-        <div class="page-header">
-            <h1>Importar Productos</h1>
+<h1 class="page-title">Datos</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="">Datos</a></li>
+    </ul>
+</div>
+
+<p>Podes cargar stock de productos mediante un archivo .csv</p>
+
+<div class="portlet light bordered">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-equalizer font-red-sunglo"></i>
+            <span class="caption-subject font-red-sunglo bold uppercase">Carga tu .csv</span>
         </div>
+    </div>
+    <div class="portlet-body form">
         <form class="uploader-form" enctype="multipart/form-data">
-            <div class="form-group">
-                <input type="file" class="form-control" id="file" name="file">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="control-label">Archivo</label>
+                    <input type="file" class="form-control" id="file" name="file">
+                    <span class="help-block"> El campo debe contener las columnas nombre, marca, imagen, stock.</span>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn green" ng-click="uploadFile()">Importar</button>
+                <img src="/assets/img/loader.gif" class="loader" alt="" ng-if="loading">
             </div>
         </form>
-        <button class="btn btn-block btn-primary" ng-click="uploadFile()">Importar</button>
     </div>
 </div>

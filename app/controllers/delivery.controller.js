@@ -1,9 +1,21 @@
-app.controller('DeliveryController', function ($scope) {
+app.controller('DeliveryController', function ($scope, toastr, $location) {
+
+    $scope.confirm = function () {
+        toastr.success('Tu pedido esta en camino.', 'Bien hecho!')
+        $location.path('/')
+    }
+
+    $scope.reject = function () {
+        toastr.error('Podes solicitar el envio cuando lo necesites.', 'No hay problema')
+        $location.path('/')
+
+    }
+
     $scope.initMap = function () {
         var markerArray = [],
             directionsService = new google.maps.DirectionsService,
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
+                zoom: 15,
                 center: {lat: -34.7101435, lng: -58.2858949}
             }),
             directionsDisplay = new google.maps.DirectionsRenderer({map: map}),

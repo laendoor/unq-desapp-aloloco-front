@@ -2,25 +2,11 @@
     <div class="col-xs-12 col-sm-3">
         <img src="{{ purchase.products[0].image }}" class="img-responsive"/>
     </div>
-    <div class="col-xs-12 col-sm-9">
-        <div class="info">
+    <div class="col-xs-10 col-sm-9">
+        <div class="info" style="padding:15px">
             <h2 class="name">{{ purchase.name }}</h2>
-            <p class="bought_at">Compra realizada el: {{ purchase.bought_at }}</p>
-            <a class="view-products" ng-click="toggleProducts()">Ver Productos</a>
-            <table class="products table table-bordered" ng-class="showProducts ? '' : 'hidden'">
-                <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="product in purchase.products">
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.amount }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <p>Compraste los siguientes productos:</p>
+            <span ng-repeat="product in purchase.products">{{product.name}} (x{{product.quantity}}) <br></span>
         </div>
     </div>
 </div>

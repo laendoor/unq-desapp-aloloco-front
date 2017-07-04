@@ -1,15 +1,26 @@
+<h1 class="page-title"> Envío a domicilio</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="">Listas</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="index.html">Envio a domicilio</a></li>
+    </ul>
+</div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="page-header">
-            <h1>Envío a domicilio</h1>
-        </div>
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12">
+        <p>Solicitaste el envio a domicilio. Confirma el envio y recibilo en menos de 1 hora!</p>
         <div id="map"></div>
     </div>
-    <div class="col-sm-6">
-        <p>Solicitaste el envio a domicilio de tu lista de compras "Asado del domingo"</p>
-        <p>Distancia hasta tu domicilio: <span id="distance"></span></p>
-        <p>Tu pedido llegará en una hora. ¿Estás seguro? <button class="btn btn-success">Si</button> <button class="btn btn-danger">No</button></p>
+    <div class="col-sm-12">
+        <p>
+            <strong>Distancia:</strong> <span id="distance"></span> <br>
+            <strong>Tiempo de espera:</strong> 40 minutos
+        </p>
+        <div class="btn-group btn-group-solid">
+            <button ng-click="confirm()" type="button" class="btn green">Confirmar</button>
+            <button ng-click="reject()" type="button" class="btn red">Rechazar</button>
+            <br><br><br>
+        </div>
     </div>
 </div>
+

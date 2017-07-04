@@ -1,54 +1,28 @@
+<h1 class="page-title">Nueva Lista</h1>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li><i class="icon-home"></i> <a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="">Listas</a> <i class="fa fa-angle-right"></i></li>
+        <li><a href="index.html">Nueva</a></li>
+    </ul>
+</div>
 <div class="row">
     <div class="col-md-12">
-        <div class="page-header">
-            <h1>Nueva lista de compras</h1>
-        </div>
-    </div>
-    <div class="col-md-6">
         <div class="form-group">
             <label for="">Nombre:</label>
-            <input type="text" class="form-control" placeholder="Nombre...">
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-md-4 stock-product" ng-repeat="product in selected()">
-                <div class="thumbnail">
-                    <img ng-src="{{ product.image }}" alt="">
-                </div>
-                <div class="meta">
-                    <strong>Nombre:</strong> {{ product.name }} <br>
-                    <strong>Marca:</strong> {{ product.brand }} <br>
-                </div>
-                <div class="input-group">
-                    <input class="form-control" placeholder="Cantidad" value="{{ product.desired }}">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" ng-click="addProductToSelectedOnes(product.id)"><i
-                                class="fa fa-trash" aria-hidden="true"></i></button>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <p ng-show="selected().length == 0">Aún no hay productos seleccionados</p>
-        <hr>
-        <button class="btn-primary btn">Guardar</button>
-        <div class="related" ng-if="relatedProducts.length > 0">
-        Tal vez te interese agregar...
-            <div ng-repeat="related in relatedProducts">
-                {{ related.name }}
-            </div>
+            <input type="text" class="form-control" placeholder="">
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-12">
+        <h2>Seleccionar productos</h2>
         <div class="form-group">
             <label for="">Buscar:</label>
             <input type="text" class="form-control" placeholder="" ng-model="search" ng-change="currentPage = 0">
         </div>
-        <hr>
-        <div class="row">
+        <div class="row search-res">
             <stock ng-repeat="product in stock | filter:search | startFrom:currentPage*pageSize | limitTo:pageSize"
                    product="product"></stock>
         </div>
-        <hr>
         <div class="pagination">
             <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
                 Previous
@@ -59,5 +33,45 @@
                 Next
             </button>
         </div>
+    </div>
+    <div class="col-md-12">
+        <h2>Productos seleccionados</h2>
+        <div class="row search-content-3">
+            <div class="col-md-3 stock-product" ng-repeat="product in selected()">
+                <div class="tile-container">
+                    <div class="tile-thumbnail">
+                        <img ng-src="{{ product.image }}">
+                    </div>
+                    <div class="tile-title">
+                        <h3>{{ product.name }}</h3>
+                        <div class="tile-desc">
+                            <p><strong>Marca:</strong> {{ product.brand }} <br>
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <input type="number" class="form-control" placeholder="Cantidad" ng-model="product.desired">
+                            <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"
+                                ng-click="removeProductFromSelectedOnes(product)"><i
+                                class="fa fa-trash" aria-hidden="true"></i></button>
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <h4 ng-show="selected().length == 0">Aún no hay productos seleccionados</h4> <br>
+            </div>
+            <div class="col-xs-12">
+                <div class="note note-info" ng-if="relatedProducts.length > 0">
+                    Teniendo en cuenta los productos que seleccionaste tambien te pueden estos: <span
+                        ng-repeat="related in relatedProducts">{{ related.name }}, </span>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <button ng-click="submit()" class="btn-primary btn">Guardar</button>
     </div>
 </div>
